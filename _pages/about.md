@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "it is to record all of Meric Xing academic activities as my personal websites"
+title: "It is to record all of Meric Xing academic activities as my personal websites"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
