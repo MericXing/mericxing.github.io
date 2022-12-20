@@ -1,21 +1,21 @@
 # main links links
 main:
-  - title: "Publications"
-    url: /publications/
+  - title: "STEM"
+    url: /stem/
 
-  - title: "Talks"
-    url: /talks/    
+  - title: "Club"
+    url: /club/    
 
-  - title: "Teaching"
-    url: /teaching/    
+  - title: "Competition"
+    url: /competition/    
     
-  - title: "Portfolio"
-    url: /portfolio/
+  - title: "Handouts"
+    url: /handouts/
         
   - title: "Blog Posts"
     url: /year-archive/
     
-  - title: "CV"
+  - title: "cv"
     url: /cv/
     
   - title: "Guide"
