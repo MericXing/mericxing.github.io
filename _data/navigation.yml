@@ -1,19 +1,20 @@
 # main links links
 main:
-  - title: "STEM"
-    url: /stem/
 
   - title: "Club"
-    url: /club/    
-
-  - title: "Competition"
-    url: /competition/    
+    url: /club/  
+  
+  - title: "Engineering Project"
+    url: /engineeringproject/
+  
+  - title: "Robot"
+    url: /robot/    
     
-  - title: "Handouts"
+  - title: "Olympiad Handouts"
     url: /handouts/
         
   - title: "Blog Posts"
-    url: /year-archive/
+    url: /blog/
     
   - title: "CV"
     url: /cv/
