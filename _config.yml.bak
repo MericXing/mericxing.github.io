@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Meric Xing Biography"
+title                    : "Meric Xing"
 title_separator          : "-"
 name                     : &name "Meric Xing"
 description              : &description "Meric's Biography"
