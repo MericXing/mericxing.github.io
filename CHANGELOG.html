@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CHANGELOG.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="342"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.4.2">3.4.2</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Improve UX of static comment forms. <a href="https://github.com/mmistakes/minimal-mistakes/issues/448">#448</a></li>
+</ul>
+<h2 id="341"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.4.1">3.4.1</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add <code>staticman.filename</code> configuration with UNIX timestamp for sorting data files. example ~&gt; <code>comment-1470943149</code>.</li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Don't add <code>&lt;a&gt;</code> to author name if URL is blank.</li>
+</ul>
+<h2 id="340"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.4.0">3.4.0</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Support static-based commenting via <a href="https://staticman.net/">Staticman</a> for sites hosted with GitHub Pages. <a href="https://github.com/mmistakes/minimal-mistakes/issues/424">#424</a></li>
+</ul>
+<h2 id="337"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.3.7">3.3.7</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Re-enabled Jekyll plugins in <code>_config.yml</code> in case they aren't autoloaded in <code>Gemfile</code>. <a href="https://github.com/mmistakes/minimal-mistakes/issues/417">#417</a></li>
+</ul>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Fallback to <code>site.github.url</code> for use in <code>{{ base_path }}</code> when <code>site.url</code> is <code>nil</code>.</li>
+<li>Replace Sass and Autoprefixer <code>npm</code> build scripts with <a href="https://jekyllrb.com/docs/assets/">Jekyll's built-in asset support</a>. <a href="https://github.com/mmistakes/minimal-mistakes/issues/333">#333</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Document <code>site.repository</code> and its role with <a href="https://github.com/jekyll/github-metadata"><code>github-metadata</code></a> gem.</li>
+<li>Add sample <a href="https://mmistakes.github.io/minimal-mistakes/archive-layout-with-content/">archive page with content</a> for testing styles on demo site.</li>
+</ul>
+<h2 id="336"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.3.6">3.3.6</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix blank <code>site.teaser</code> bug. <a href="https://github.com/mmistakes/minimal-mistakes/issues/412">#412</a></li>
+</ul>
+<h2 id="335"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.3.5">3.3.5</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add English default text <code>site.locale</code> strings. <a href="https://github.com/mmistakes/minimal-mistakes/issues/407">#407</a></li>
+<li>Add Portuguese localized UI text. <a href="https://github.com/mmistakes/minimal-mistakes/pull/411">#411</a></li>
+<li>Add Italian localized UI text. <a href="https://github.com/mmistakes/minimal-mistakes/pull/409">#409</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Remove unused Google AdSense variables in <code>_config.yml</code>. <a href="https://github.com/mmistakes/minimal-mistakes/issues/404">#404</a></li>
+<li>Update <code>Gemfile</code> instructions for using <code>github-pages</code> vs. native <code>jekyll</code> gems.</li>
+<li>Disable <code>gems:</code> in <code>_config.yml</code> and enable plugins with Bundler instead.</li>
+<li>Add <code>repository</code> to <code>_config.yml</code> to suppress GitHub Pages error <code>Liquid Exception: No repo name found.</code></li>
+</ul>
+<h2 id="334"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.3.4">3.3.4</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add support for configurable feed URL to use a service like FeedBurner instead of linking directly to <code>feed.xml</code> in <code>&lt;head&gt;</code> and the site footer. <a href="https://github.com/mmistakes/minimal-mistakes/issues/378">#378</a>, <a href="https://github.com/mmistakes/minimal-mistakes/pull/379">#379</a>, <a href="https://github.com/mmistakes/minimal-mistakes/pull/406">#406</a></li>
+<li>Add Turkish localized UI text. <a href="https://github.com/mmistakes/minimal-mistakes/pull/403">#403</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Update gems: <code>activesupport</code> (4.2.7), <code>ffi</code> (1.9.14), <code>github-pages</code> (88), <code>jekyll-redirect-from</code> (0.11.0), <code>jekyll-watch</code> (1.5.0).</li>
+</ul>
+<h2 id="333"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.3.3">3.3.3</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Make footer stick to the bottom of the page.</li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix <code>gallery</code> size bug <a href="https://github.com/mmistakes/minimal-mistakes/issues/402">#402</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Set default <code>lang</code> to <code>en</code>.</li>
+</ul>
+<h2 id="332"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.3.2">3.3.2</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix JavaScript that triggers &quot;sticky&quot; sidebar to avoid layout issues on screen sizes &lt; <code>1024px</code>. <a href="https://github.com/mmistakes/minimal-mistakes/issues/396">#396</a></li>
+</ul>
+<h2 id="331"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.3.1">3.3.1</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Enable image popup on &lt; 500px wide screens. <a href="https://github.com/mmistakes/minimal-mistakes/issues/385">#385</a></li>
+<li>Indicate the relationship between component URLs in a paginated series by applying <code>rel=&quot;prev&quot;</code> and <code>rel=&quot;next&quot;</code> to pages that use <code>site.paginator</code>. <a href="https://github.com/mmistakes/minimal-mistakes/issues/253">#253</a></li>
+<li>Improve link posts in archive listings. <a href="https://github.com/mmistakes/minimal-mistakes/issues/276">#276</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Update gems: <code>github-pages</code> (86), <code>ffi</code> 1.9.13, <code>jekyll-mentions</code> 1.1.3, and <code>rouge</code> 1.11.1</li>
+<li>Fix note about custom sidebar content appearing below author profile. <a href="https://github.com/mmistakes/minimal-mistakes/issues/388">#388</a></li>
+</ul>
+<h2 id="3213"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.13">3.2.13</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add English default UI text for Canada, Great Britain, and Australia. <a href="https://github.com/mmistakes/minimal-mistakes/issues/377">#377</a></li>
+<li>Switch default locale from <code>en-US</code> to <code>en</code>.</li>
+</ul>
+<h2 id="3212"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.12">3.2.12</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Remove window width &quot;magic number&quot; from sticky sidebar check in <code>main.js</code> for improved flexibility. <a href="https://github.com/mmistakes/minimal-mistakes/pull/375">#375</a></li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix author override conditional where a missing <code>authors.yml</code> would show broken sidebar content. Defaults to <code>site.author</code>. <a href="https://github.com/mmistakes/minimal-mistakes/pull/376">#376</a></li>
+</ul>
+<h2 id="3211"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.11">3.2.11</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix disappearing author sidebar links <a href="https://github.com/mmistakes/minimal-mistakes/issues/372">#372</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Update gems: <code>github-pages</code> (84), <code>jekyll-github-metadata</code> 2.0.2, and <code>kramdown</code> 1.11.1</li>
+<li>Update vendor JavaScript: jQuery 1.12.4, Stickyfill.js 1.1.4</li>
+<li>Update Font Awesome 4.6.3</li>
+</ul>
+<h2 id="3210"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.10">3.2.10</a></h2>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Add <code>CONTRIBUTING.md</code></li>
+</ul>
+<h2 id="329"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.9">3.2.9</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add support for <a href="https://mmistakes.github.io/minimal-mistakes/docs/layouts/#header-overlay">header overlay images</a> for Open Graph images. <a href="https://github.com/mmistakes/minimal-mistakes/pull/358">#358</a></li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix <code>Person</code> typo Schema.org type <a href="https://github.com/mmistakes/minimal-mistakes/pull/358">#358</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Update <code>github-pages</code> gem and dependencies.</li>
+<li>Remove <code>minutes_read</code> to avoid awkward reading time wording <a href="https://github.com/mmistakes/minimal-mistakes/issues/356">#356</a></li>
+</ul>
+<h2 id="328"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.8">3.2.8</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Remove <code>cursor: pointer</code> that appears on white-space surrounding author side list items and links. <a href="https://github.com/mmistakes/minimal-mistakes/pull/354">#354</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Add contributing information to <code>README.md</code>. <a href="https://github.com/mmistakes/minimal-mistakes/issues/357">#357</a></li>
+</ul>
+<h2 id="327"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.7">3.2.7</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add French localized UI text. <a href="https://github.com/mmistakes/minimal-mistakes/pull/346">#346</a></li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix branch logic for Yandex and Alexa in <code>seo.html</code>. <a href="https://github.com/mmistakes/minimal-mistakes/pull/348">#348</a></li>
+</ul>
+<h2 id="326"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.6">3.2.6</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix error <code>Liquid Exception: divided by 0 in _includes/archive-single.html, included in _layouts/single.html</code> caused by null <code>words_per_minute</code> in <code>_config.yml</code>. <a href="https://github.com/mmistakes/minimal-mistakes/pull/345">#345</a></li>
+</ul>
+<h2 id="325"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.5">3.2.5</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix link color in hero overlay to be white.</li>
+<li>Remove underlines from archive item titles.</li>
+</ul>
+<h2 id="324"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.4">3.2.4</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Improve text alignment of masthead, hero overlay, page footer to be flush left and remove awkward white-space gaps. <a href="https://github.com/mmistakes/minimal-mistakes/issues/342">#342</a></li>
+<li>Add Spanish localized UI text. <a href="https://github.com/mmistakes/minimal-mistakes/pull/338">#338</a></li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix alignment of icons in author sidebar <a href="https://github.com/mmistakes/minimal-mistakes/issues/341">#341</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Add background color to page footer to set it apart from main content. <a href="https://github.com/mmistakes/minimal-mistakes/issues/342">#342</a></li>
+<li>Add terms and privacy policy to theme's demo site. <a href="https://github.com/mmistakes/minimal-mistakes/issues/343">#343</a></li>
+<li>Update screenshots found in theme documentation.</li>
+</ul>
+<h2 id="323"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.3">3.2.3</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add <a href="https://www.discourse.org/">Discourse</a> as a commenting provider. <a href="https://github.com/mmistakes/minimal-mistakes/pull/335">#335</a></li>
+</ul>
+<h2 id="322"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.2">3.2.2</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add support for image captions in Magnific Popup overlays via the <a href="https://mmistakes.github.io/minimal-mistakes/docs/helpers/#gallery"><code>gallery</code></a> helper. <a href="https://github.com/mmistakes/minimal-mistakes/issues/334">#334</a></li>
+</ul>
+<h2 id="321"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.1">3.2.1</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Remove need for &quot;double tapping&quot; masthead menu links on iOS devices. <a href="https://github.com/mmistakes/minimal-mistakes/issues/315">#315</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Add <code>ISSUE_TEMPLATE.md</code> for improve issue submission process.</li>
+</ul>
+<h2 id="320"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.2.0">3.2.0</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix missing category/tag links in post footer due to possible conflict with <code>site.tags</code> and <code>site.categories</code>. <a href="https://github.com/mmistakes/minimal-mistakes/issues/329#issuecomment-222375568">#329</a></li>
+</ul>
+<h2 id="318"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.1.8">3.1.8</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix <code>Liquid Exception: undefined method 'gsub' for nil:NilClass in _layouts/single.html</code> error when <code>page.title</code> is null. <code>&lt;h1&gt;</code> element is now conditional if <code>title: </code> is not set for a <code>page</code> or collection item. <a href="https://github.com/mmistakes/minimal-mistakes/issues/312">#312</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>
+<p>Remove duplicate <code>fa-twitter</code> and <code>fa-twitter-square</code> classes from <code>_utilities.scss</code>. <a href="https://github.com/mmistakes/minimal-mistakes/issues/302">#302</a></p>
+</li>
+<li>
+<p>Document installing additional Jekyll gem dependencies when using <code>gem &quot;jekyll&quot;</code> instead of <code>gem &quot;github-pages&quot;</code> to avoid any errors on run. <a href="https://github.com/mmistakes/minimal-mistakes/issues/305">#305</a></p>
+</li>
+</ul>
+<h2 id="317"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.1.7">3.1.7</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add translation key for &quot;Recent Posts&quot; used in home page <code>index.html</code>. <a href="https://github.com/mmistakes/minimal-mistakes/pull/316">#316</a></li>
+</ul>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Small fix to avoid underlying the whitespace between icons and related text when hovering. <a href="https://github.com/mmistakes/minimal-mistakes/pull/303">#303</a></li>
+</ul>
+<h2 id="316"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.1.6">3.1.6</a></h2>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Update gem dependencies. Run <code>bundle</code> to update <code>Gemfile.lock</code>.</li>
+</ul>
+<h2 id="315"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.1.5">3.1.5</a></h2>
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+<li>Fix <code>www</code> and <code>https</code> links in author profile include <a href="https://github.com/mmistakes/minimal-mistakes/pull/293">#293</a></li>
+</ul>
+<h2 id="314"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.1.4">3.1.4</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add overlay_filter param to hero headers <a href="https://github.com/mmistakes/minimal-mistakes/pull/298">#298</a></li>
+</ul>
+<h2 id="313"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.1.3">3.1.3</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Improve <code>site.locale</code> documentation <a href="https://github.com/mmistakes/minimal-mistakes/issues/284">#284</a></li>
+<li>Remove ProTip note about protocol-less <code>site.url</code> as it is an anti-pattern <a href="https://github.com/mmistakes/minimal-mistakes/issues/288">#288</a></li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix <code>og_image</code> URL in seo.html <a href="https://github.com/mmistakes/minimal-mistakes/issues/277">#277</a></li>
+<li>Fix <code>author_profile</code> toggle when assigned in a <code>_layout</code> <a href="https://github.com/mmistakes/minimal-mistakes/issues/285">#285</a></li>
+<li>Fix typo in <code>build:all</code> npm script <a href="https://github.com/mmistakes/minimal-mistakes/pull/283">#283</a></li>
+<li>Fix URL typo documentation <a href="https://github.com/mmistakes/minimal-mistakes/issues/287">#287</a></li>
+<li>SEO author bug. If <code>twitter.username</code> is set and <code>author.twitter</code> is <code>nil</code> bad things happen. <a href="https://github.com/mmistakes/minimal-mistakes/issues/289">#289</a></li>
+</ul>
+<h2 id="312"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.1.2">3.1.2</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Explain how to use <code>nav_list</code> helper in <a href="https://mmistakes.github.io/minimal-mistakes/docs/helpers/#navigation-list">documentation</a>.</li>
+<li>Reduce left/right padding on smaller screens to increase width of main content column.</li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix alignment issues with related posts <a href="https://github.com/mmistakes/minimal-mistakes/issues/273">#273</a> and &quot;Follow&quot; button in author profile <a href="https://github.com/mmistakes/minimal-mistakes/issues/274">#274</a>.</li>
+</ul>
+<h2 id="311"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.1.1">3.1.1</a></h2>
+<h3 id="bug-fix">Bug Fix</h3>
+<ul>
+<li>Fixed reading time bug when <code>words_per_minute</code> wasn't set in <code>_config.yml</code> <a href="https://github.com/mmistakes/minimal-mistakes/issues/271">#271</a></li>
+</ul>
+<h2 id="310"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.1.0">3.1.0</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Updated <a href="https://fortawesome.github.io/Font-Awesome/whats-new/">Font Awesome</a> to version 4.6.1</li>
+<li>Added optional GitHub and Bitbucket links to footer if set on <code>site.author</code> in <code>_config.yml</code>.</li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fixed Bitbucket URL typo in author sidebar.</li>
+</ul>
+<h2 id="303"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/3.0.3">3.0.3</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Rebuilt the entire theme: layouts, includes, stylesheets, scripts, you name it.</li>
+<li>Refreshed the look and feel while staying true to the original design of the theme (author sidebar/main content).</li>
+<li>Replaced grid system with <a href="http://susy.oddbird.net/">Susy</a>.</li>
+<li>Replaced Grunt tasks with <code>npm</code> scripts.</li>
+<li>Removed Google Fonts and replaced with system fonts to improve performance (they can be <a href="https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/">added back</a> if desired)</li>
+<li>Greatly improved <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/">theme documentation</a>.</li>
+<li>Increased the amount of sample posts, sample pages, and sample collections to throughly test the theme and edge-cases.</li>
+<li>Moved all sample content and assets out of <code>master</code> to keep it as clean as possible for forking.</li>
+<li>Added new layouts for <code>splash</code> pages, archives for <a href="https://github.com/jekyll/jekyll-archives"><code>jekyll-archives</code></a> if enabled, and <a href="https://github.com/penibelst/jekyll-compress-html"><code>compress.html</code></a> to improve performance.</li>
+<li>Added taxonomy links to posts (tags and categories).</li>
+<li>Added optional &quot;reading time&quot; meta data.</li>
+<li>Improved Liquid used for Twitter Cards and Open Graph data in <code>&lt;head&gt;</code>.</li>
+<li>Improved <code>gallery</code> include helper and added <code>feature_row</code> for use with splash page layout.</li>
+<li>Added Keybase.io, author web URI, and Bitbucket optional links to sidebar.</li>
+<li>Add <code>feed.xml</code> link to footer.</li>
+<li>Added a <a href="https://mmistakes.github.io/minimal-mistakes/docs/ui-text/">UI text data file</a> to easily change all text found in the theme.</li>
+<li>Added LinkedIn to optional social share buttons.</li>
+<li>Added Facebook, Google+, and custom commenting options in addition to Disqus.</li>
+<li>Added optional breadcrumb links.</li>
+</ul>
+<h2 id="221"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/2.2.1">2.2.1</a></h2>
+<h2 id="220"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/2.2.0">2.2.0</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add support for Jekyll 3.0</li>
+<li>Minor updates to syntax highlighting CSS and theme documentation</li>
+</ul>
+<h2 id="213"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/2.1.3">2.1.3</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Cleaner print styles that remove the top navigation, social sharing buttons, and other elements not needed when printed.</li>
+</ul>
+<h2 id="212"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/2.1.2">2.1.2</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add optional CodePen icon/url to author side bar <a href="https://github.com/mmistakes/minimal-mistakes/pull/156">#156</a></li>
+<li>Documented Stackoverflow username explanation in <code>_config.yml</code> <a href="https://github.com/mmistakes/minimal-mistakes/pull/157">#157</a></li>
+<li>Simplified Liquid in <code>post-index.html</code> to better handle year listings <a href="https://github.com/mmistakes/minimal-mistakes/pull/166">#166</a></li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Cleanup Facebook related Open Graph meta tags <a href="https://github.com/mmistakes/minimal-mistakes/issues/149">#149</a></li>
+<li>Corrected minor typos <a href="https://github.com/mmistakes/minimal-mistakes/pull/158">#158</a> <a href="https://github.com/mmistakes/minimal-mistakes/issues/175">#175</a></li>
+</ul>
+<h2 id="211"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/2.1.1">2.1.1</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add optional XING profile link to author sidebar</li>
+<li>Include open graph meta tags for feature image (if assigned) <a href="https://github.com/mmistakes/minimal-mistakes/issues/149">#149</a></li>
+<li>Create an include for feed footer</li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Remove http protocol from Google search form on sample 404 page</li>
+<li>Only show related posts if there are one or more available</li>
+<li>Fix alignment of email address link in author sidebar</li>
+</ul>
+<h2 id="210"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/2.1.0">2.1.0</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Add optional social sharing buttons (<a href="https://github.com/mmistakes/minimal-mistakes/issues/42">#42</a>)</li>
+</ul>
+<p><img src="https://cloud.githubusercontent.com/assets/1376749/5860522/d9f28a96-a22f-11e4-9b83-940a3a9a766a.png" alt="social sharing buttons"></p>
+<ul>
+<li>Add Soundcloud, YouTube (<a href="https://github.com/mmistakes/minimal-mistakes/pull/95">#95</a>), Flickr (<a href="https://github.com/mmistakes/minimal-mistakes/pull/119">#119</a>), and Weibo (<a href="https://github.com/mmistakes/minimal-mistakes/pull/116">#116</a>) icons for use in author sidebar.</li>
+<li>Fix typos in posts and documentation and remove references to Less</li>
+<li>Include note about Octopress gem being optional</li>
+<li>Post author override support extended to the Atom feed (<a href="https://github.com/mmistakes/minimal-mistakes/pull/71">#71</a>)</li>
+<li>Only include email address in feed if specified in <code>_config.yml</code> or author <code>_data</code></li>
+<li>Wrap all page content in <code>#main</code> to harmonize article and post index styles (<a href="https://github.com/mmistakes/minimal-mistakes/issues/86">#86</a>)</li>
+<li>Include new sample feature images for posts and pages</li>
+<li>Table of contents improvements: fix collapse toggle, indent nested elements, show on small screens, and create an <code>_include</code> for reusing in posts and pages.</li>
+<li>Include note about running Jekyll with <code>bundle exec</code> when using Bundler</li>
+<li>Fix home page path in top navigation</li>
+<li>Remove Google Authorship (<a href="https://github.com/mmistakes/minimal-mistakes/issues/120">#120</a>)</li>
+<li>Remove duplicate author content that displayed in <code>div.article-author-bottom</code></li>
+<li>Removed unused <code>_sass/print.scss</code> styles</li>
+<li>Improve comments in <code>.scss</code> files</li>
+</ul>
+<h2 id="200"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/v2.0">2.0.0</a></h2>
+<h2 id="133"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/1.3.3">1.3.3</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Added new icons and profile links for Stackoverflow, Dribbble, Pinterest, Foursquare, and Steam to the author bio sidebar.</li>
+<li>Cleaned up the Kramdown auto table of contents styling to be more readable</li>
+<li>Removed page width specific .less stylesheets and created mixins for easier updating</li>
+<li>Removed Modernizr since it wasn't being used</li>
+<li>Added pages to sitemap.xml</li>
+<li>Added category: to rake new_post task</li>
+<li>Minor typographic changes</li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Corrected various broken links in README and Theme Setup.</li>
+</ul>
+<h2 id="131"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/1.3.1">1.3.1</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Cleaned up table of contents styling</li>
+<li>Reworked top navigation to be a better experience on small screens. Nav items now display vertically when the menu button is tapped, revealing links with larger touch targets.</li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/3fbd8c1326485f4b1ab32c0005c0fca7660b5d31/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f313337363734392f323136343037352f31653366303663322d393465372d313165332d383961612d6436623636376562306564662e676966" alt="menu animation"></p>
+<h2 id="120"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/1.2.0">1.2.0</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Table weren't filling the entire width of the content container. They now scale at 100%. Thanks <a href="https://github.com/dhruvbhatia">@dhruvbhatia</a></li>
+</ul>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Decreased spacing between Markdown footnotes</li>
+<li>Removed dark background on footer</li>
+<li>Removed UPPERCASE styling on post titles in the index listing</li>
+</ul>
+<h2 id="114"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/1.1.4">1.1.4</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix top navigation bug issue (<a href="https://github.com/mmistakes/minimal-mistakes/issues/10">#10</a>) for real this time. Remember to clear your floats kids.</li>
+</ul>
+<h2 id="113"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/1.1.3">1.1.3</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix top navigation links that weren't click able on small viewports (Issue <a href="https://github.com/mmistakes/minimal-mistakes/issues/10">#10</a>).</li>
+<li>Remove line wrap from top navigation links that may span multiple lines.</li>
+</ul>
+<h2 id="112"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/1.1.2">1.1.2</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Added Grunt build script for compiling Less/JavaScript and optimizing image assets.</li>
+<li>Added support for large image summary Twitter card.</li>
+<li>Stylesheet adjustments</li>
+</ul>
+<h2 id="111"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/1.1.1">1.1.1</a></h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Removed <a href="http://typeplate.com/">Typeplate</a> styles. Was <a href="https://github.com/typeplate/typeplate.github.io/issues/108">causing issues with newer versions of Less</a> and is no longer maintained.</li>
+</ul>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Added <a href="http://mmistakes.github.io/minimal-mistakes/theme-setup/#feature-images">image attribution</a> for post and page feature images.</li>
+<li>Added <a href="http://mmistakes.github.io/minimal-mistakes/404.html">404 page</a>.</li>
+<li>Cleaned up various Less variables to better align with naming conventions used in other MM Jekyll themes.</li>
+<li>Removed Chrome Frame references.</li>
+<li>Added global CSS3 transitions to text and block elements.</li>
+<li>Improved typography in a few places.</li>
+</ul>
+<h2 id="102"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/v1.0.2">1.0.2</a></h2>
+<h3 id="enhancements">Enhancements</h3>
+<ul>
+<li>Google Analytics, Google Authorship, webmaster verifies, and Twitter card meta are now optional.</li>
+</ul>
+<h2 id="101"><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/v1.0.1">1.0.1</a></h2>
+
+</body>
+</html>
