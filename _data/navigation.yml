@@ -20,10 +20,7 @@ main:
         
   - title: "Blog Posts"
     url: /blog/
-    
-  - title: "CV"
-    url: /cv/
-    
+   
   - title: "Guide"
     url: /markdown/
     

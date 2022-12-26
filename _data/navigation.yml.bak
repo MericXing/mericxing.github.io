@@ -5,6 +5,9 @@ main:
   
   - title: "Club"
     url: /club/  
+    
+  - title: "Keyboard Piano"
+    url: /piano/ 
   
   - title: "Engineering Project"
     url: /engineeringproject/
